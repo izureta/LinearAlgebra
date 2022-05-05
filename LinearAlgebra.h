@@ -11,6 +11,7 @@ namespace LinearAlgebra {
         }
         return Matrix(e);
     }
+
     template<class ValueType = Rational<int64_t>>
     Matrix<ValueType> Zero(size_t n) {
         std::vector<std::vector<ValueType>> zero;

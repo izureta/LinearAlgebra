@@ -49,10 +49,10 @@ public:
 
     Matrix operator*(const Matrix &B) const {
         if (_matrix.empty()) {
-            throw std::invalid_argument("Empty _matrix multiplication exception");
+            throw std::invalid_argument("Empty matrix multiplication exception");
         }
         if (B._matrix.empty()) {
-            throw std::invalid_argument("Empty _matrix multiplication exception");
+            throw std::invalid_argument("Empty matrix multiplication exception");
         }
         if (this->_matrix[0].size() != B._matrix.size()) {
             throw std::invalid_argument("Wrong matrices sizes A(n1, m1) * B(n2, m2) m1 != n2");
@@ -216,7 +216,7 @@ public:
     }
 
     /*
-     * Output: reduced row echelon form of the _matrix
+     * Output: reduced row echelon form of the matrix
      */
     Matrix Gauss() const {
         if (_matrix.empty()) {
@@ -260,7 +260,7 @@ public:
             return 0;
         }
         if (_matrix.size() != _matrix[0].size()) {
-            throw std::invalid_argument("Determinant of non-square _matrix exception");
+            throw std::invalid_argument("Determinant of non-square matrix exception");
         }
         Matrix A = *this;
         ValueType det = 1;
@@ -330,8 +330,8 @@ public:
 
     /*
      * Jacobi method of diagonalizing symmetrical bilinear form
-     * Input: symmetrical bilinear form's _matrix
-     * Output: pair(normalized _matrix, transition _matrix)
+     * Input: symmetrical bilinear form's matrix
+     * Output: pair(normalized matrix, transition matrix)
      */
     std::pair<Matrix, Matrix> Jacobi() const {
         Matrix E;
@@ -340,12 +340,12 @@ public:
             return {A, E};
         }
         if (A._matrix.size() != A[0].size()) {
-            throw std::invalid_argument("Jacobi diagonalizing non-square _matrix exception");
+            throw std::invalid_argument("Jacobi diagonalizing non-square matrix exception");
         }
         for (size_t i = 0; i < A._matrix.size(); ++i) {
             for (size_t j = i + 1; j < A._matrix.size(); ++j) {
                 if (A[i][j] != A[j][i]) {
-                    throw std::invalid_argument("Jacobi diagonalizing asymmetrical _matrix exception");
+                    throw std::invalid_argument("Jacobi diagonalizing asymmetrical matrix exception");
                 }
             }
         }
@@ -394,9 +394,9 @@ public:
     }
 
     /*
-     * Orthogonalization of column _matrix space using Gram-Schmidt process
-     * Input: vectors in columns of the input _matrix
-     * Output: orthogonal vectors in columns of the output _matrix
+     * Orthogonalization of column matrix space using Gram-Schmidt process
+     * Input: vectors in columns of the input matrix
+     * Output: orthogonal vectors in columns of the output matrix
      */
     Matrix Orthogonalization() const {
         Matrix A = *this;
