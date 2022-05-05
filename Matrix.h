@@ -328,6 +328,40 @@ public:
         return rank;
     }
 
+    Matrix Inverse() const {
+        if (_matrix.empty()) {
+            return *this;
+        }
+        if (_matrix.size() != _matrix[0].size()) {
+            throw std::invalid_argument("Inversion of non-square matrix exception");
+        }
+        std::vector<std::vector<ValueType>> b;
+        b.resize(_matrix.size());
+        for (size_t i = 0; i < _matrix.size(); ++i) {
+            b[i].resize(_matrix.size() * 2, ValueType(0));
+            for (size_t j = 0; j < _matrix.size(); ++j) {
+                b[i][j] = _matrix[i][j];
+            }
+            b[i][_matrix.size() + i] = 1;
+        }
+        Matrix B(b);
+        B = B.Gauss();
+        for (size_t i = 0; i < _matrix.size(); ++i) {
+            if (B[i][i] != ValueType(1)) {
+                throw std::invalid_argument("Inversion of not invertible matrix exception");
+            }
+        }
+        std::vector<std::vector<ValueType>> inv;
+        inv.resize(_matrix.size());
+        for (size_t i = 0; i < _matrix.size(); ++i) {
+            inv[i].resize(_matrix.size());
+            for (size_t j = 0; j < _matrix.size(); ++j) {
+                inv[i][j] = B[i][j + _matrix.size()];
+            }
+        }
+        return Matrix(inv);
+    }
+
     /*
      * Jacobi method of diagonalizing symmetrical bilinear form
      * Input: symmetrical bilinear form's matrix
