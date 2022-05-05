@@ -119,10 +119,11 @@ public:
 
 private:
     ValueType GCD(ValueType a, ValueType b) {
-        if (b == 0) {
-            return a;
+        while (b != 0) {
+            a %= b;
+            std::swap(a, b);
         }
-        return GCD(b, a % b);
+        return a;
     }
 
     void Reduce() {
