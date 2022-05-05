@@ -4,7 +4,7 @@ This is a simple linear algebra library
 # Implemented
 * Matrix class (with rational numbers by default)
 * Rational numbers class
-* Some linear algebra algorithms: Gauss algorithm, Jacobi algorithm, Gram-Schmidt process
+* Some linear algebra algorithms: Gauss algorithm, Jacobi algorithm (of diagonalizing symmetrical bilinear form), Gram-Schmidt process
 
 # Examples
 * Basic matrix operations
