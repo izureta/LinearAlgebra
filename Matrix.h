@@ -226,13 +226,13 @@ public:
         std::vector<std::pair<size_t, size_t>> main_variables;
         for (size_t first_row = 0, column = 0; first_row < A._matrix.size() && column < A[0].size();) {
             for (size_t row = first_row; row < A._matrix.size(); ++row) {
-                if (A[row][column] != 0) {
+                if (A[row][column] != ValueType(0)) {
                     A.RowSwap(row, first_row);
                     break;
                 }
             }
             ValueType first_element = A[first_row][column];
-            if (first_element == 0) {
+            if (first_element == ValueType(0)) {
                 ++column;
                 continue;
             }
@@ -266,7 +266,7 @@ public:
         ValueType det = 1;
         for (size_t first_row = 0, column = 0; first_row < A._matrix.size() && column < A[0].size();) {
             for (size_t row = first_row; row < A._matrix.size(); ++row) {
-                if (A[row][column] != 0) {
+                if (A[row][column] != ValueType(0)) {
                     A.RowSwap(row, first_row);
                     if (row != first_row) {
                         det *= -1;
@@ -275,7 +275,7 @@ public:
                 }
             }
             ValueType first_element = A[first_row][column];
-            if (first_element == 0) {
+            if (first_element == ValueType(0)) {
                 ++column;
                 continue;
             }
@@ -301,13 +301,13 @@ public:
         Matrix A = *this;
         for (size_t first_row = 0, column = 0; first_row < A._matrix.size() && column < A[0].size();) {
             for (size_t row = first_row; row < A._matrix.size(); ++row) {
-                if (A[row][column] != 0) {
+                if (A[row][column] != ValueType(0)) {
                     A.RowSwap(row, first_row);
                     break;
                 }
             }
             ValueType first_element = A[first_row][column];
-            if (first_element == 0) {
+            if (first_element == ValueType(0)) {
                 ++column;
                 continue;
             }
@@ -321,7 +321,7 @@ public:
         }
         size_t rank = 0;
         for (size_t i = 0; i < A._matrix.size(); ++i) {
-            if (A[i][i] != 0) {
+            if (A[i][i] != ValueType(0)) {
                 rank += 1;
             }
         }
@@ -392,9 +392,9 @@ public:
             size_t first_row = iteration;
             size_t column = iteration;
             ValueType first_element = A[first_row][column];
-            if (first_element == 0) {
+            if (first_element == ValueType(0)) {
                 for (size_t i = first_row + 1; i < A._matrix.size(); ++i) {
-                    if (A[i][i] != 0) {
+                    if (A[i][i] != ValueType(0)) {
                         A.RowSwap(first_row, i);
                         E.RowSwap(first_row, i);
                         A.ColumnSwap(first_row, i);
@@ -402,9 +402,9 @@ public:
                     }
                 }
                 first_element = A[first_row][column];
-                if (first_element == 0) {
+                if (first_element == ValueType(0)) {
                     for (size_t row = first_row + 1; row < A._matrix.size(); ++row) {
-                        if (A[row][column] != 0) {
+                        if (A[row][column] != ValueType(0)) {
                             A.RowAddition(first_row, row, ValueType(1));
                             E.RowAddition(first_row, row, ValueType(1));
                             A.ColumnAddition(first_row, row, ValueType(1));
@@ -414,7 +414,7 @@ public:
                 }
             }
             first_element = A[first_row][column];
-            if (first_element == 0) {
+            if (first_element == ValueType(0)) {
                 continue;
             }
             for (size_t row = first_row + 1; row < A._matrix.size(); ++row) {
@@ -439,13 +439,13 @@ public:
         }
         for (size_t i = 1; i < A[0].size(); ++i) {
             for (size_t j = 0; j < i; ++j) {
-                ValueType a_norm = 0;
-                ValueType dot_product = 0;
+                ValueType a_norm = ValueType(0);
+                ValueType dot_product = ValueType(0);
                 for (size_t k = 0; k < _matrix.size(); ++k) {
                     a_norm += A[k][j] * A[k][j];
                     dot_product += A[k][j] * _matrix[k][i];
                 }
-                if (a_norm == 0) {
+                if (a_norm == ValueType(0)) {
                     continue;
                 }
                 for (size_t k = 0; k < A._matrix.size(); ++k) {
