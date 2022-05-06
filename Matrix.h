@@ -257,19 +257,19 @@ public:
 
     ValueType Determinant() const {
         if (_matrix.empty()) {
-            return 0;
+            return ValueType(0);
         }
         if (_matrix.size() != _matrix[0].size()) {
             throw std::invalid_argument("Determinant of non-square matrix exception");
         }
         Matrix A = *this;
-        ValueType det = 1;
+        ValueType det = ValueType(1);
         for (size_t first_row = 0, column = 0; first_row < A._matrix.size() && column < A[0].size();) {
             for (size_t row = first_row; row < A._matrix.size(); ++row) {
                 if (A[row][column] != ValueType(0)) {
                     A.RowSwap(row, first_row);
                     if (row != first_row) {
-                        det *= -1;
+                        det *= ValueType(-1);
                     }
                     break;
                 }
