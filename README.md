@@ -70,3 +70,5 @@ Correspondant symmetrical matrix
     >>> std::cout << B.Rank();
     2
 ```
+
+<img src="https://latex.codecogs.com/svg.image?rank(B)&space;=&space;2" />
