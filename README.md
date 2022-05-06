@@ -63,7 +63,8 @@ Correspondant symmetrical matrix
 
 ```cpp
     >>> #include <complex>
-    >>> using cmpl = std::complex<int64_t>;
+    >>> using rat = Rational<int64_t>;
+    >>> using cmpl = std::complex<rat>;
     >>> Matrix<cmpl> B({{cmpl(1, 0), cmpl(0, 0), cmpl(0, 1)},
                         {cmpl(0, 0), cmpl(0, 1), cmpl(0, 0)},
                         {cmpl(0, 0), cmpl(2, 0), cmpl(0, 0)}});
