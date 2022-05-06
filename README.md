@@ -1,5 +1,5 @@
 # LinearAlgebra
-This is a simple linear algebra library
+This is a simple c++ linear algebra library
 
 # Implemented
 * Matrix class (with rational numbers by default)
@@ -53,3 +53,17 @@ Correspondant symmetrical matrix
     0 0 0
 ```
 <img src="https://latex.codecogs.com/svg.image?f(x)=g(y)=y_1^2&plus;y_2^2" />
+
+
+* Matrix with complex numbers
+<img src="https://latex.codecogs.com/svg.image?B=\begin{pmatrix}&space;0&0&i&space;\\&space;0&i&0&space;\\&space;i&0&0&space;\end{pmatrix}" />
+
+```cpp
+    >>> #include <complex>
+    >>> using cmpl = std::complex<int64_t>;
+    >>> Matrix<cmpl> B({{0, 0, cmpl(0, 1)},
+            {0, cmpl(0, 1), 0},
+            {cmpl(0, 1), 0, 0}});
+    >>> Matrix C = B.Inverse();
+```
+<img src="https://latex.codecogs.com/svg.image?C=\begin{pmatrix}&space;0&0&-i&space;\\&space;0&-i&0&space;\\&space;-i&0&0&space;\end{pmatrix}" />
