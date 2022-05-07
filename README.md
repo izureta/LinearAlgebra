@@ -1,5 +1,7 @@
 # LinearAlgebra
-This is a simple c++ linear algebra library
+This is a simple c++ linear algebra library. 
+
+This library works with rational numbers by default and doesn't work well with float and double built-in types because of the precision error. A customized class with overloaded == and != operators should be used instead.
 
 # Implemented
 * Matrix class (with rational numbers by default)
